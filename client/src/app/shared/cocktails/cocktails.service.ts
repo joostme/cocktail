@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { Cocktail } from './cocktails.model';
 import { allCocktailsQuery } from './cocktails.requests';
@@ -14,6 +13,6 @@ export class CocktailsService {
     ) { }
 
     getAllCocktails(): Observable<Cocktail[]> {
-        return this.graphqlService.query<Cocktail[]>(environment.remoteHost, allCocktailsQuery);
+        return this.graphqlService.query<Cocktail[]>(allCocktailsQuery);
     }
 }
