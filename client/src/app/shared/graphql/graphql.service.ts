@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { GraphqlQuery } from './graphql-query.model';
 import { Observable } from 'rxjs/Observable';
 import { GraphqlResponse } from './graphql-response.model';
+import { isUndefined } from 'lodash';
+
 @Injectable()
 export class GraphqlService {
 
@@ -18,7 +20,8 @@ export class GraphqlService {
 
     private transformQuery(query: GraphqlQuery) {
         return {
-            query: `query { ${query.name} ${query.request} }`
+            query: `query { ${query.name} ${query.request} }`,
+            variables: isUndefined(query.variables) ? null : query.variables
         };
     }
 }
