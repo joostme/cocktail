@@ -2,13 +2,13 @@
     <article class="media">
         <figure class="media-left">
             <p class="image is-128x128">
-                <img [src]="cocktail.image">
+                <img [src]="(cocktail | async).image">
             </p>
         </figure>
         <div class="media-content">
             <div class="content">
-                <h2>{{ cocktail.name }}</h2>
-                <p>{{ cocktail.description }}</p>
+                <h2>{{ (cocktail | async).name }}</h2>
+                <p>{{ (cocktail | async).description }}</p>
                 <h3>Ingredients</h3>
                 <table class="table is-striped">
                     <thead>
@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let ingredient of cocktail.ingredients">
+                        <tr *ngFor="let ingredient of (cocktail | async).ingredients">
                             <td><strong>{{ ingredient.amount }}</strong></td>
                             <td>{{ ingredient.name }}</td>
                             <td><span class="cocktail-group tag is-primary" (click)="goToGroup(ingredient.group)">{{ ingredient.group }}</span></td>

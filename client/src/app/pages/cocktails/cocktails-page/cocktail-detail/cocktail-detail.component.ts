@@ -21,7 +21,6 @@ export class CocktailDetailComponent {
         this.cocktail = this.store.select(getSelectedCocktail());
     }
 
-
     goToGroup(name: string) {
         this.router.navigate(['/'], { queryParams: {group: name}});
     }

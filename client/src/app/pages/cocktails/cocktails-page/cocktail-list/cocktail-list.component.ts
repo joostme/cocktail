@@ -23,6 +23,7 @@ export class CocktailListComponent {
 
     goToDetail(cocktail: Cocktail) {
         this.store.dispatch(new SelectCocktailAction(cocktail));
+        this.router.navigate([cocktail.name], { relativeTo: this.activatedRoute });
     }
 
     onGroupDetail(group: string) {

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app.routing.module';
 import { CocktailsModule } from './shared/cocktails/cocktails.module';
 
@@ -18,6 +19,9 @@ import { CocktailsModule } from './shared/cocktails/cocktails.module';
         AppRoutingModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot(effects),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25
+          }),
         CocktailsModule
     ],
     providers: [],
