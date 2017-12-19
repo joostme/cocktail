@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'ctl-cocktail-search',
-  templateUrl: './cocktail-search.component.html',
-  styleUrls: ['./cocktail-search.component.sass']
+    selector: 'ctl-cocktail-search',
+    templateUrl: './cocktail-search.component.html',
+    styleUrls: ['./cocktail-search.component.sass']
 })
-export class CocktailSearchComponent implements OnInit {
+export class CocktailSearchComponent {
 
-  constructor() { }
+    @ViewChild('searchInput')
+    searchInput: ElementRef;
 
-  ngOnInit() {
-  }
+    @Output()
+    onSearch: EventEmitter<string> = new EventEmitter();
 
+    constructor() { }
+
+    search(event: Event) {
+        event.preventDefault();
+        this.onSearch.emit(this.searchInput.nativeElement.value.trim());
+    }
 }

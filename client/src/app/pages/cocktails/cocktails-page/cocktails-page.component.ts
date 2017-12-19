@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cocktails-page.component.html',
   styleUrls: ['./cocktails-page.component.sass']
 })
-export class CocktailsPageComponent implements OnInit {
+export class CocktailsPageComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  onSearch(searchString: string) {
+      console.log(searchString);
   }
 
 }

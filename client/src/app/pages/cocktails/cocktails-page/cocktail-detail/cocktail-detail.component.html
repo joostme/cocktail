@@ -1,0 +1,46 @@
+<div class="box">
+    <article class="media">
+        <figure class="media-left">
+            <p class="image is-128x128">
+                <img [src]="cocktail.image">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <h2>{{ cocktail.name }}</h2>
+                <p>{{ cocktail.description }}</p>
+                <h3>Ingredients</h3>
+                <table class="table is-striped">
+                    <thead>
+                        <tr>
+                            <th>Amount</th>
+                            <th>Ingredient</th>
+                            <th>Group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ingredient of cocktail.ingredients">
+                            <td><strong>{{ ingredient.amount }}</strong></td>
+                            <td>{{ ingredient.name }}</td>
+                            <td><span class="cocktail-group tag is-primary" (click)="goToGroup(ingredient.group)">{{ ingredient.group }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <a class="level-item">
+                        <span class="icon is-small">
+                            <i class="fa fa-reply"></i>
+                        </span>
+                    </a>
+                    <a class="level-item">
+                        <span class="icon is-small">
+                            <i class="fa fa-heart"></i>
+                        </span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </article>
+</div>
