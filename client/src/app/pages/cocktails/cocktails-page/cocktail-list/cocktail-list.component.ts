@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
-import { testData } from '../../../../shared/cocktails/cocktails-test-data';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppState } from '../../../../store/app-state';
+import { Store } from '@ngrx/store';
+import { SelectCocktailAction } from '../../../../store/cocktails/cocktails.actions';
 
 @Component({
     selector: 'ctl-cocktail-list',
@@ -12,14 +14,15 @@ export class CocktailListComponent {
 
     constructor(
         private router: Router,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private store: Store<AppState>
     ) { }
 
     @Input()
     cocktails: Cocktail[];
 
-    goToDetail(id: number) {
-        this.router.navigate([id], { relativeTo: this.activatedRoute });
+    goToDetail(cocktail: Cocktail) {
+        this.store.dispatch(new SelectCocktailAction(cocktail));
     }
 
     onGroupDetail(group: string) {

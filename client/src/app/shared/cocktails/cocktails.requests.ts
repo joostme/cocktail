@@ -9,9 +9,7 @@ export const allCocktailsQuery: GraphqlQuery = {
         ingredients {
           name,
           amount,
-          group {
-            name
-          }
+          group
         }
     }`
 };

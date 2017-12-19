@@ -20,7 +20,7 @@
                             <tr *ngFor="let ingredient of cocktail.ingredients">
                                 <td><strong>{{ ingredient.amount }}</strong></td>
                                 <td>{{ ingredient.name }}</td>
-                                <td><span class="cocktail-group tag is-primary" (click)="goToGroup(ingredient.group, $event)">{{ ingredient.group.name }}</span></td>
+                                <td><span class="cocktail-group tag is-primary" (click)="goToGroup(ingredient.group, $event)">{{ ingredient.group }}</span></td>
                             </tr>
                         </tbody>
                     </table>

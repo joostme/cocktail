@@ -12,13 +12,13 @@ export class ListItemComponent {
     cocktail: Cocktail;
 
     @Output()
-    onDetail: EventEmitter<number> = new EventEmitter();
+    onDetail: EventEmitter<Cocktail> = new EventEmitter();
 
     @Output()
     onGroupDetail: EventEmitter<string> = new EventEmitter();
 
     goToDetail() {
-        this.onDetail.emit(this.cocktail.id);
+        this.onDetail.emit(this.cocktail);
     }
 
     addToFavorites(event: Event) {

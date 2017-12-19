@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { testData } from '../../../../shared/cocktails/cocktails-test-data';
 import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../store/app-state';
+import { Observable } from 'rxjs/Observable';
+import { getSelectedCocktail } from '../../../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktail-detail',
@@ -9,12 +12,15 @@ import { Router } from '@angular/router';
     styleUrls: ['./cocktail-detail.component.sass']
 })
 export class CocktailDetailComponent {
+    cocktail: Observable<Cocktail>;
 
     constructor(
-        private router: Router
-    ) { }
+        private router: Router,
+        private store: Store<AppState>
+    ) {
+        this.cocktail = this.store.select(getSelectedCocktail());
+    }
 
-    cocktail: Cocktail = testData[0];
 
     goToGroup(name: string) {
         this.router.navigate(['/'], { queryParams: {group: name}});
