@@ -6,6 +6,7 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app.routing.module';
+import { CocktailsModule } from './shared/cocktails/cocktails.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app.routing.module';
         BrowserModule,
         AppRoutingModule,
         StoreModule.forRoot(reducers),
-        EffectsModule.forRoot(effects)
+        EffectsModule.forRoot(effects),
+        CocktailsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

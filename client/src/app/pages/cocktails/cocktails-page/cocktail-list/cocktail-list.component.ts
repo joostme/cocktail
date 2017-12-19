@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
 import { testData } from '../../../../shared/cocktails/cocktails-test-data';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,7 +15,8 @@ export class CocktailListComponent {
         private activatedRoute: ActivatedRoute
     ) { }
 
-    cocktails: Cocktail[] = testData;
+    @Input()
+    cocktails: Cocktail[];
 
     goToDetail(id: number) {
         this.router.navigate([id], { relativeTo: this.activatedRoute });
