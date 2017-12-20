@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { AppState } from '../../../store/app-state';
+import { Store } from '@ngrx/store';
+import { SubmitCocktailAction } from '../../../store/cocktails/cocktails.actions';
 
 @Component({
   selector: 'ctl-create-cocktail',
@@ -11,36 +14,34 @@ export class CreateCocktailComponent implements OnInit {
     cocktailForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private store: Store<AppState>
     ) { }
 
     ngOnInit() {
         this.cocktailForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            description: ['', Validators.required],
-            image: ['', Validators.required],
-            ingredients: this.formBuilder.array([ this.createIngredient(), this.createIngredient(), this.createIngredient() ])
+            name: '',
+            description: '',
+            image: '',
+            ingredients: this.formBuilder.array([ this.createIngredient() ])
         });
     }
 
     createIngredient(): FormGroup {
         return this.formBuilder.group({
-            name: ['', Validators.required],
+            name: '',
             amount: '',
-            group: ['', Validators.required]
+            group: '',
         });
     }
 
-    addIngredient(event: Event): void {
-        event.preventDefault();
-        event.stopPropagation();
+    addIngredient(): void {
         const ingredients = this.cocktailForm.get('ingredients') as FormArray;
+        ingredients.push(this.createIngredient());
     }
 
-    submit(event: Event) {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log(this.cocktailForm.value);
+    submit() {
+        this.store.dispatch(new SubmitCocktailAction(this.cocktailForm.value));
     }
 
 }

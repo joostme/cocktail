@@ -4,7 +4,9 @@ import { Cocktail } from '../../shared/cocktails/cocktails.model';
 export enum ActionType {
     LoadCocktails = '[Cocktails] Load cocktails',
     CocktailsLoaded = '[Cocktails] Cocktails loaded',
-    SelectCocktail = '[Cocktails] Select Cocktail'
+    SelectCocktail = '[Cocktails] Select Cocktail',
+    SubmitCocktail = '[Cocktails] Submit Cocktail',
+    CocktailSubmitted = '[Cockails] Cocktail submitted'
 }
 
 export class LoadCocktailsAction implements Action {
@@ -24,5 +26,21 @@ export class SelectCocktailAction implements Action {
 
     constructor(
         public payload: number
+    ) { }
+}
+
+export class SubmitCocktailAction implements Action {
+    type = ActionType.SubmitCocktail;
+
+    constructor(
+        public payload: Partial<Cocktail>
+    ) { }
+}
+
+export class CocktailSubmittedAction implements Action {
+    type = ActionType.CocktailSubmitted;
+
+    constructor(
+        public payload: Cocktail
     ) { }
 }

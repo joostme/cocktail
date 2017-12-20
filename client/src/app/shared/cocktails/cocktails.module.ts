@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CocktailsService } from './cocktails.service';
-import { GraphqlModule } from '../graphql/graphql.module';
-import { environment } from '../../../environments/environment';
+import { ApolloModule } from 'apollo-angular';
+import { HttpLinkModule } from 'apollo-angular-link-http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
         CommonModule,
-        GraphqlModule.forRoot(environment.remoteHost)
+        HttpClientModule,
+        ApolloModule,
+        HttpLinkModule
     ],
     providers: [
         CocktailsService

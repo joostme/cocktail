@@ -1,17 +1,41 @@
-import { GraphqlQuery } from '../graphql/graphql-query.model';
+import gql from 'graphql-tag';
+import { GraphqlRequest } from './graphql-request.model';
 
-export const allCocktailsQuery: GraphqlQuery = {
+export const allCocktailsQuery: GraphqlRequest = {
     name: 'allCocktails',
-    request: `{
-        id,
-        name,
-        description,
-        image,
-        ingredients {
-          name,
-          amount,
-          group
+    gql:     gql`
+    query {
+        allCocktails {
+            id,
+            name,
+            description,
+            image,
+            ingredients {
+                name
+                amount
+                group
+            }
         }
     }`
+};
+
+
+export const submitCocktailMutation: GraphqlRequest = {
+    name: 'createCocktail',
+    gql: gql`
+    mutation createCocktail($cocktail: CocktailInput!) {
+        createCocktail(cocktail: $cocktail) {
+        id
+        name
+        description
+        image
+        ingredients {
+            name
+            amount
+            group
+        }
+        }
+    }
+`
 };
 

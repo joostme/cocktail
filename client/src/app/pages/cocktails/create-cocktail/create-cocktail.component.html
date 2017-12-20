@@ -34,10 +34,20 @@
         </div>
         <div class="level">
             <div class="level-left">
-                <button class="button" (click)="addIngredient($event)">Add Ingredient</button>
+                <a class="button" (click)="addIngredient()">
+                    <span class="icon is-small">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span>Add Ingredient</span>
+                </a>
             </div>
             <div class="level-right">
-                <button class="button is-primary" (click)="submit($event)">Submit</button>
+                <a class="button is-success" (click)="submit()">
+                    <span class="icon is-small">
+                        <i class="fa fa-check"></i>
+                    </span>
+                    <span>Save</span>
+                </a>
             </div>
         </div>
     </form>
