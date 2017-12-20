@@ -15,6 +15,7 @@ const typeDefs = `
     }
 
     type Cocktail {
+        id: ID!,
         name: String!
         description: String!
         image: String!
