@@ -10,6 +10,22 @@
                 <h1>{{ cocktail.name }}</h1>
             </div>
         </div>
+        <div class="media-right">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <a class="level-item">
+                        <span class="icon is-small">
+                            <i class="fa fa-reply"></i>
+                        </span>
+                    </a>
+                    <a class="level-item">
+                        <span class="icon is-small" (click)="addToFavorites($event)">
+                            <i class="fa fa-heart"></i>
+                        </span>
+                    </a>
+                </div>
+            </nav>
+        </div>
     </article>
     <div class="content">
         <h3>Ingredients</h3>
@@ -33,19 +49,5 @@
                 </tr>
             </tbody>
         </table>
-        <nav class="level is-mobile">
-            <div class="level-left">
-                <a class="level-item">
-                    <span class="icon is-small">
-                        <i class="fa fa-reply"></i>
-                    </span>
-                </a>
-                <a class="level-item">
-                    <span class="icon is-small" (click)="addToFavorites($event)">
-                        <i class="fa fa-heart"></i>
-                    </span>
-                </a>
-            </div>
-        </nav>
     </div>
 </div>
