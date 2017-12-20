@@ -6,18 +6,22 @@ import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 import { CocktailsPageRoutingModule } from './cocktails-page.routing.module';
 import { ListItemComponent } from './cocktail-list/list-item/list-item.component';
 import { CocktailDetailComponent } from './cocktail-detail/cocktail-detail.component';
+import { CreateCocktailComponent } from './create-cocktail/create-cocktail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
-        CocktailsPageRoutingModule
+        CocktailsPageRoutingModule,
+        ReactiveFormsModule
     ],
     declarations: [
         CocktailsPageComponent,
         CocktailSearchComponent,
         CocktailListComponent,
         ListItemComponent,
-        CocktailDetailComponent
+        CocktailDetailComponent,
+        CreateCocktailComponent
     ]
 })
 export class CocktailsPageModule {

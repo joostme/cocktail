@@ -1,0 +1,44 @@
+<div class="box">
+    <form (submit)="onSubmit($event)" [formGroup]="cocktailForm">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Cocktail name" formControlName="name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Description" formControlName="description"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Image URL</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="http://" formControlName="image">
+            </div>
+        </div>
+        <div formArrayName="ingredients" *ngFor="let ingredient of cocktailForm.controls.ingredients.controls; let i = index;">
+            <label class="label">Ingredient #{{ i + 1}}</label>
+            <div class="field is-grouped ingredient" [formGroupName]="i">
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Ingredient" formControlName="name">
+                </div>
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Amount" formControlName="amount">
+                </div>
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Group" formControlName="group">
+                </div>
+            </div>
+        </div>
+        <div class="level">
+            <div class="level-left">
+                <button class="button" (click)="addIngredient($event)">Add Ingredient</button>
+            </div>
+            <div class="level-right">
+                <button class="button is-primary" (click)="submit($event)">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
