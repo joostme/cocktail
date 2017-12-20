@@ -25,7 +25,7 @@ module.exports = {
     },
     Mutation: {
         createCocktail(_, data) {
-            const newCocktail = Object.assign({ id: cocktails.length + 1 }, data);
+            const newCocktail = Object.assign({ id: cocktails.length + 1 }, data.cocktail);
             cocktails.push(newCocktail);
             return newCocktail;
         }
