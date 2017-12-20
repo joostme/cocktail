@@ -23,6 +23,6 @@ export class SelectCocktailAction implements Action {
     type = ActionType.SelectCocktail;
 
     constructor(
-        public payload: Cocktail
+        public payload: number
     ) { }
 }

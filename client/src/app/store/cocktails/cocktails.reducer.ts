@@ -17,14 +17,11 @@ export function cocktailReducer(state: State = initialState, action: Action): St
     switch (action.type) {
         case ActionType.CocktailsLoaded:
             return adapter.addAll((<CocktailsLoadedAction> action).payload, state);
-        // case ActionType.SelectCocktail:
-        //     const index = selectCocktails(state).findIndex(cocktail => {
-        //         return cocktail === (<SelectCocktailAction>action).payload;
-        //     });
-        //     return {
-        //         ...state,
-        //         selectedCocktailId: index === -1 ? null : index
-        //     };
+        case ActionType.SelectCocktail:
+            return {
+                ...state,
+                selectedCocktailId: (<SelectCocktailAction> action).payload
+            };
         default:
             return state;
     }

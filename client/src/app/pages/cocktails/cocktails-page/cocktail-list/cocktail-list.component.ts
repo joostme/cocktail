@@ -22,7 +22,7 @@ export class CocktailListComponent {
     cocktails: Cocktail[];
 
     goToDetail(cocktail: Cocktail) {
-        this.store.dispatch(new SelectCocktailAction(cocktail));
+        this.store.dispatch(new SelectCocktailAction(cocktail.id));
         this.router.navigate([cocktail.name], { relativeTo: this.activatedRoute });
     }
 
