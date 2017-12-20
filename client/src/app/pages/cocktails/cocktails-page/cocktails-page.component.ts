@@ -5,7 +5,7 @@ import { CocktailsService } from '../../../shared/cocktails/cocktails.service';
 import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
 import { LoadCocktailsAction } from '../../../store/cocktails/cocktails.actions';
-import { getCocktails } from '../../../store/cocktails/cocktails.selectors';
+import { selectCocktails } from '../../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktails-page',
@@ -21,7 +21,7 @@ export class CocktailsPageComponent {
         private store: Store<AppState>
     ) {
         this.store.dispatch(new LoadCocktailsAction());
-        this.cocktails = this.store.select(getCocktails());
+        this.cocktails = this.store.select(selectCocktails);
     }
 
     onSearch(searchString: string) {

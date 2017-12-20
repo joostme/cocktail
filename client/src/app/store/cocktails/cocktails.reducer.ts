@@ -1,32 +1,30 @@
 import { Action } from '@ngrx/store';
 import { Cocktail } from '../../shared/cocktails/cocktails.model';
 import { ActionType, CocktailsLoadedAction, SelectCocktailAction } from './cocktails.actions';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-export interface State {
-    cocktails: Cocktail[];
-    selectedCocktail: number;
+export interface State extends EntityState<Cocktail> {
+    selectedCocktailId: number | null;
 }
 
-const initialState: State = {
-    cocktails: null,
-    selectedCocktail: null
-};
+export const adapter: EntityAdapter<Cocktail> = createEntityAdapter<Cocktail>();
+
+const initialState: State = adapter.getInitialState({
+    selectedCocktailId: null
+});
 
 export function cocktailReducer(state: State = initialState, action: Action): State {
     switch (action.type) {
         case ActionType.CocktailsLoaded:
-            return {
-                ...state,
-                cocktails: (<CocktailsLoadedAction>action).payload
-            };
-        case ActionType.SelectCocktail:
-            const index = state.cocktails.findIndex(cocktail => {
-                return cocktail === (<SelectCocktailAction>action).payload;
-            });
-            return {
-                ...state,
-                selectedCocktail: index === -1 ? null : index
-            };
+            return adapter.addAll((<CocktailsLoadedAction> action).payload, state);
+        // case ActionType.SelectCocktail:
+        //     const index = selectCocktails(state).findIndex(cocktail => {
+        //         return cocktail === (<SelectCocktailAction>action).payload;
+        //     });
+        //     return {
+        //         ...state,
+        //         selectedCocktailId: index === -1 ? null : index
+        //     };
         default:
             return state;
     }

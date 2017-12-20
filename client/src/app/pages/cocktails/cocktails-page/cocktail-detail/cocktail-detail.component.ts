@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../store/app-state';
 import { Observable } from 'rxjs/Observable';
-import { getSelectedCocktail } from '../../../../store/cocktails/cocktails.selectors';
+import { selectCurrentCocktail } from '../../../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktail-detail',
@@ -18,7 +18,7 @@ export class CocktailDetailComponent {
         private router: Router,
         private store: Store<AppState>
     ) {
-        this.cocktail = this.store.select(getSelectedCocktail());
+        this.cocktail = this.store.select(selectCurrentCocktail);
     }
 
     goToGroup(name: string) {
