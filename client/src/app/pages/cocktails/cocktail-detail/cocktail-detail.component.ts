@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
+import { Cocktail } from '../../../shared/cocktails/cocktails.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app-state';
+import { AppState } from '../../../store/app-state';
 import { Observable } from 'rxjs/Observable';
-import { selectCurrentCocktail } from '../../../../store/cocktails/cocktails.selectors';
+import { selectCurrentCocktail } from '../../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktail-detail',

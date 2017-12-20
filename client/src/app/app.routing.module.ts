@@ -9,7 +9,7 @@ const routes: Routes = [
     },
     {
         path: 'cocktails',
-        loadChildren: 'app/pages/cocktails/cocktails-page/cocktails-page.module#CocktailsPageModule'
+        loadChildren: 'app/pages/cocktails/cocktails-page.module#CocktailsPageModule'
     }
 ];
 

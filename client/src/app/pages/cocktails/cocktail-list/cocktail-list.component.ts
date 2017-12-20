@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
+import { Cocktail } from '../../../shared/cocktails/cocktails.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppState } from '../../../../store/app-state';
+import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
-import { SelectCocktailAction } from '../../../../store/cocktails/cocktails.actions';
+import { SelectCocktailAction } from '../../../store/cocktails/cocktails.actions';
 
 @Component({
     selector: 'ctl-cocktail-list',

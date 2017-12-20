@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Cocktail } from '../../../../../shared/cocktails/cocktails.model';
+import { Cocktail } from '../../../../shared/cocktails/cocktails.model';
 
 @Component({
     selector: 'ctl-list-item',

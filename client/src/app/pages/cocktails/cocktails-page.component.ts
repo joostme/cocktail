@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Cocktail } from '../../../shared/cocktails/cocktails.model';
-import { CocktailsService } from '../../../shared/cocktails/cocktails.service';
-import { AppState } from '../../../store/app-state';
+import { Cocktail } from '../../shared/cocktails/cocktails.model';
+import { CocktailsService } from '../../shared/cocktails/cocktails.service';
+import { AppState } from '../../store/app-state';
 import { Store } from '@ngrx/store';
-import { LoadCocktailsAction } from '../../../store/cocktails/cocktails.actions';
-import { selectCocktails } from '../../../store/cocktails/cocktails.selectors';
+import { LoadCocktailsAction } from '../../store/cocktails/cocktails.actions';
+import { selectCocktails } from '../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktails-page',
