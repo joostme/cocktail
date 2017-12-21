@@ -1,0 +1,7 @@
+<div class="cocktail-page">
+    <ctl-cocktail-search (onSearch)="onSearch($event)"></ctl-cocktail-search>
+    <div class="box">
+        <a class="button" routerLink="create">Add Cocktail</a>
+    </div>
+    <ctl-cocktail-list [cocktails]="cocktails | async"></ctl-cocktail-list>
+</div>

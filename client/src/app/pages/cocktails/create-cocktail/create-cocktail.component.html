@@ -1,0 +1,62 @@
+<div class="box">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a routerLink="../">Cocktails</a></li>
+            <li class="is-active">
+                <a routerLink="." aria-current="page">Create</a>
+            </li>
+        </ul>
+    </nav>
+    <form (submit)="onSubmit($event)" [formGroup]="cocktailForm">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Cocktail name" formControlName="name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Description" formControlName="description"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Image URL</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="http://" formControlName="image">
+            </div>
+        </div>
+        <div formArrayName="ingredients" *ngFor="let ingredient of cocktailForm.controls.ingredients.controls; let i = index;">
+            <label class="label">Ingredient #{{ i + 1}}</label>
+            <div class="field is-grouped ingredient" [formGroupName]="i">
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Ingredient" formControlName="name">
+                </div>
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Amount" formControlName="amount">
+                </div>
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Group" formControlName="group">
+                </div>
+            </div>
+        </div>
+        <div class="level">
+            <div class="level-left">
+                <a class="button" (click)="addIngredient()">
+                    <span class="icon is-small">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span>Add Ingredient</span>
+                </a>
+            </div>
+            <div class="level-right">
+                <a class="button is-success" (click)="submit()">
+                    <span class="icon is-small">
+                        <i class="fa fa-check"></i>
+                    </span>
+                    <span>Save</span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

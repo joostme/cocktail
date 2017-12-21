@@ -1,0 +1,3 @@
+<div class="list">
+    <ctl-list-item *ngFor="let cocktail of cocktails" [cocktail]="cocktail" (onDetail)="goToDetail($event)" (onGroupDetail)="onGroupDetail($event)"></ctl-list-item>
+</div>
