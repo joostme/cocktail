@@ -6,7 +6,8 @@ export enum ActionType {
     CocktailsLoaded = '[Cocktails] Cocktails loaded',
     SelectCocktail = '[Cocktails] Select Cocktail',
     SubmitCocktail = '[Cocktails] Submit Cocktail',
-    CocktailSubmitted = '[Cockails] Cocktail submitted'
+    CocktailSubmitted = '[Cockails] Cocktail submitted',
+    AddToFavorites = '[Cocktails] Add to favorites'
 }
 
 export class LoadCocktailsAction implements Action {
@@ -39,6 +40,14 @@ export class SubmitCocktailAction implements Action {
 
 export class CocktailSubmittedAction implements Action {
     type = ActionType.CocktailSubmitted;
+
+    constructor(
+        public payload: Cocktail
+    ) { }
+}
+
+export class AddToFavoritesAction implements Action {
+    type = ActionType.AddToFavorites;
 
     constructor(
         public payload: Cocktail

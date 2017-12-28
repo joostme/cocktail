@@ -11,12 +11,18 @@ export const {
     selectAll: selectCocktails,
     selectIds: selectCocktailIds,
     selectEntities: selectCocktailEntities,
-    selectTotal: selectCocktailToal
+    selectTotal: selectCocktailTotal
 } = cocktailAdapter.getSelectors(selectCocktailState);
 
 export const selectCurrentCocktailId = createSelector(selectCocktailState, getSelectedCocktailId);
+
 export const selectCurrentCocktail = createSelector(
     selectCocktailEntities,
     selectCurrentCocktailId,
     (cocktails, id) => cocktails[id]
+);
+
+export const selectFavorites = createSelector(
+    selectCocktailState,
+    state => state.favorites
 );

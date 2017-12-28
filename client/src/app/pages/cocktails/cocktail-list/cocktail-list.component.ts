@@ -3,7 +3,7 @@ import { Cocktail } from '../../../shared/cocktails/cocktails.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
-import { SelectCocktailAction } from '../../../store/cocktails/cocktails.actions';
+import { SelectCocktailAction, AddToFavoritesAction } from '../../../store/cocktails/cocktails.actions';
 
 @Component({
     selector: 'ctl-cocktail-list',
@@ -21,13 +21,23 @@ export class CocktailListComponent {
     @Input()
     cocktails: Cocktail[];
 
+    @Input()
+    favorites: number[];
+
     goToDetail(cocktail: Cocktail) {
-        this.store.dispatch(new SelectCocktailAction(cocktail.id));
-        this.router.navigate([cocktail.name], { relativeTo: this.activatedRoute });
+        this.router.navigate([cocktail.id], { relativeTo: this.activatedRoute });
     }
 
     onGroupDetail(group: string) {
         this.router.navigate([''], { queryParams: { group }, relativeTo: this.activatedRoute });
+    }
+
+    onAddToFavorites(cocktail: Cocktail) {
+        this.store.dispatch(new AddToFavoritesAction(cocktail));
+    }
+
+    isFavorite(cocktail: Cocktail): boolean {
+        return this.favorites.includes(cocktail.id);
     }
 
 }
