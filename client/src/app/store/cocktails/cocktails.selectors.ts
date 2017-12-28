@@ -26,3 +26,8 @@ export const selectFavorites = createSelector(
     selectCocktailState,
     state => state.favorites
 );
+
+export const selectLoaded = createSelector(
+    selectCocktailState,
+    state => state.loaded
+);
