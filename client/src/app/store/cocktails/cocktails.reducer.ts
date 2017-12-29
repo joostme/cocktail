@@ -3,6 +3,7 @@ import { Cocktail } from '../../shared/cocktails/cocktails.model';
 import { ActionType, CocktailsLoadedAction, SelectCocktailAction, AddToFavoritesAction } from './cocktails.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { stagger } from '@angular/core/src/animation/dsl';
+import { without } from 'lodash';
 
 export interface State extends EntityState<Cocktail> {
     loaded: boolean;
@@ -38,6 +39,12 @@ export function cocktailReducer(state: State = initialState, action: Action): St
             return {
                 ...state,
                 favorites: [...state.favorites, favoriteId]
+            };
+        case ActionType.RemoveFromFavorites:
+            const id = (<AddToFavoritesAction>action).payload.id;
+            return {
+                ...state,
+                favorites: without(state.favorites, id)
             };
         default:
             return state;

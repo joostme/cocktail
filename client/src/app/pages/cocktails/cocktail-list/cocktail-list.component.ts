@@ -3,7 +3,7 @@ import { Cocktail } from '../../../shared/cocktails/cocktails.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
-import { SelectCocktailAction, AddToFavoritesAction } from '../../../store/cocktails/cocktails.actions';
+import { SelectCocktailAction, AddToFavoritesAction, RemoveFromFavoritesAction } from '../../../store/cocktails/cocktails.actions';
 
 @Component({
     selector: 'ctl-cocktail-list',
@@ -34,6 +34,10 @@ export class CocktailListComponent {
 
     onAddToFavorites(cocktail: Cocktail) {
         this.store.dispatch(new AddToFavoritesAction(cocktail));
+    }
+
+    onRemoveFromFavorites(cocktail: Cocktail) {
+        this.store.dispatch(new RemoveFromFavoritesAction(cocktail));
     }
 
     isFavorite(cocktail: Cocktail): boolean {

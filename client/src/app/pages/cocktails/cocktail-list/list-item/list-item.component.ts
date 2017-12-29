@@ -23,6 +23,9 @@ export class ListItemComponent {
     @Output()
     onAddToFavorites: EventEmitter<Cocktail> = new EventEmitter();
 
+    @Output()
+    onRemoveFromFavorites: EventEmitter<Cocktail> = new EventEmitter();
+
     goToDetail() {
         this.onDetail.emit(this.cocktail);
     }
@@ -31,6 +34,12 @@ export class ListItemComponent {
         event.preventDefault();
         event.stopPropagation();
         this.onAddToFavorites.emit(this.cocktail);
+    }
+
+    removeFromFavorites(event: Event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.onRemoveFromFavorites.emit(this.cocktail);
     }
 
     goToGroup(name: string, event: Event) {
