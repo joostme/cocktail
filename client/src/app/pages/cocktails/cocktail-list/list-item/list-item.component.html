@@ -17,8 +17,9 @@
                         </span>
                     </a>
                     <a class="level-item">
-                        <span class="icon is-small" (click)="addToFavorites($event)">
-                            <i class="fa fa-heart"></i>
+                        <span class="icon is-small">
+                            <i *ngIf="!favorite" class="fa fa-heart not-favorite" (click)="addToFavorites($event)"></i>
+                            <i *ngIf="favorite" class="fa fa-heart" (click)="removeFromFavorites($event)"></i>
                         </span>
                     </a>
                 </div>

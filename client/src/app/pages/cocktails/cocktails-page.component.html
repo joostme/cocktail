@@ -3,5 +3,5 @@
     <div class="box">
         <a class="button" routerLink="create">Add Cocktail</a>
     </div>
-    <ctl-cocktail-list [cocktails]="cocktails | async"></ctl-cocktail-list>
+    <ctl-cocktail-list [cocktails]="cocktails | async" [favorites]="favorites | async"></ctl-cocktail-list>
 </div>
