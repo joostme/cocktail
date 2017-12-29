@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app.routing.module';
 import { CocktailsModule } from './shared/cocktails/cocktails.module';
+import { CocktailsPageResolver } from './pages/cocktails/cocktails-page.resolver';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { CocktailsModule } from './shared/cocktails/cocktails.module';
           }),
         CocktailsModule
     ],
-    providers: [],
+    providers: [
+        CocktailsPageResolver
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

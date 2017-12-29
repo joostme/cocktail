@@ -11,11 +11,20 @@ export class ListItemComponent {
     @Input()
     cocktail: Cocktail;
 
+    @Input()
+    favorite: boolean;
+
     @Output()
     onDetail: EventEmitter<Cocktail> = new EventEmitter();
 
     @Output()
     onGroupDetail: EventEmitter<string> = new EventEmitter();
+
+    @Output()
+    onAddToFavorites: EventEmitter<Cocktail> = new EventEmitter();
+
+    @Output()
+    onRemoveFromFavorites: EventEmitter<Cocktail> = new EventEmitter();
 
     goToDetail() {
         this.onDetail.emit(this.cocktail);
@@ -24,6 +33,13 @@ export class ListItemComponent {
     addToFavorites(event: Event) {
         event.preventDefault();
         event.stopPropagation();
+        this.onAddToFavorites.emit(this.cocktail);
+    }
+
+    removeFromFavorites(event: Event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.onRemoveFromFavorites.emit(this.cocktail);
     }
 
     goToGroup(name: string, event: Event) {

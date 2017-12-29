@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { CocktailsPageResolver } from './pages/cocktails/cocktails-page.resolver';
 
 const routes: Routes = [
     {
@@ -9,7 +10,8 @@ const routes: Routes = [
     },
     {
         path: 'cocktails',
-        loadChildren: 'app/pages/cocktails/cocktails-page.module#CocktailsPageModule'
+        loadChildren: 'app/pages/cocktails/cocktails-page.module#CocktailsPageModule',
+        resolve: [CocktailsPageResolver]
     }
 ];
 

@@ -5,7 +5,7 @@ import { CocktailsService } from '../../shared/cocktails/cocktails.service';
 import { AppState } from '../../store/app-state';
 import { Store } from '@ngrx/store';
 import { LoadCocktailsAction } from '../../store/cocktails/cocktails.actions';
-import { selectCocktails } from '../../store/cocktails/cocktails.selectors';
+import { selectCocktails, selectFavorites } from '../../store/cocktails/cocktails.selectors';
 
 @Component({
     selector: 'ctl-cocktails-page',
@@ -16,12 +16,14 @@ export class CocktailsPageComponent {
 
     cocktails: Observable<Cocktail[]>;
 
+    favorites: Observable<number[]>;
+
     constructor(
         private cocktailsService: CocktailsService,
         private store: Store<AppState>
     ) {
-        this.store.dispatch(new LoadCocktailsAction());
         this.cocktails = this.store.select(selectCocktails);
+        this.favorites = this.store.select(selectFavorites);
     }
 
     onSearch(searchString: string) {
