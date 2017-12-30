@@ -1,6 +1,6 @@
 import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { ActionType, CocktailsLoadedAction, SubmitCocktailAction, CocktailSubmittedAction } from './cocktails.actions';
+import { ActionType, CocktailsLoadedAction, SubmitCocktailAction, CocktailSubmittedAction, LoadCocktailsAction } from './cocktails.actions';
 import 'rxjs/add/operator/switchMap';
 import { CocktailsService } from '../../shared/cocktails/cocktails.service';
 
@@ -20,12 +20,17 @@ export class CocktailEffects {
                 .map(cocktails => new CocktailsLoadedAction(cocktails));
         });
 
-        @Effect()
-        submitCocktail = this.actions
+    @Effect()
+    submitCocktail = this.actions
         .ofType(ActionType.SubmitCocktail)
         .map((action: SubmitCocktailAction) => action.payload)
         .switchMap(newCocktail => {
             return this.cocktailsService.submit(newCocktail)
                 .map(cocktail => new CocktailSubmittedAction(cocktail));
         });
+
+    @Effect()
+    reloadAfterSubmit = this.actions
+        .ofType(ActionType.CocktailSubmitted)
+        .map(() => new LoadCocktailsAction());
 }
