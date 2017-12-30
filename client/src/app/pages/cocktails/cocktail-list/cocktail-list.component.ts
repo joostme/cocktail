@@ -3,7 +3,7 @@ import { Cocktail } from '../../../shared/cocktails/cocktails.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
-import { SelectCocktailAction, AddToFavoritesAction, RemoveFromFavoritesAction } from '../../../store/cocktails/cocktails.actions';
+import { AddToFavoritesAction, RemoveFromFavoritesAction } from '../../../store/cocktails/cocktails.actions';
 
 @Component({
     selector: 'ctl-cocktail-list',

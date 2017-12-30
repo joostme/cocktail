@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { CocktailsPageComponent } from './cocktails-page.component';
 import { CocktailDetailComponent } from './cocktail-detail/cocktail-detail.component';
 import { CreateCocktailComponent } from './create-cocktail/create-cocktail.component';
+import { CocktailsPageResolver } from './cocktails-page.resolver';
 
 const routes: Routes = [
     {
         path: '',
-        component: CocktailsPageComponent
+        component: CocktailsPageComponent,
+        resolve: [CocktailsPageResolver]
     },
     {
         path: 'create',
@@ -15,7 +17,8 @@ const routes: Routes = [
     },
     {
         path: ':id',
-        component: CocktailDetailComponent
+        component: CocktailDetailComponent,
+        resolve: [CocktailsPageResolver]
     },
 ];
 

@@ -6,6 +6,8 @@ import { AppState } from '../../store/app-state';
 import { selectLoaded } from '../../store/cocktails/cocktails.selectors';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import { isUndefined } from 'util';
+import { SelectCocktailAction } from '../../store/cocktails/cocktails.actions';
 
 @Injectable()
 export class CocktailsPageResolver implements Resolve<boolean> {
@@ -15,6 +17,9 @@ export class CocktailsPageResolver implements Resolve<boolean> {
     ) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+        if (!isUndefined(route.params.id)) {
+            this.store.dispatch(new SelectCocktailAction(route.params.id));
+        }
         return this.hasCocktailsLoaded();
     }
 

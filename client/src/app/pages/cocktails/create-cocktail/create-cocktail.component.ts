@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { AppState } from '../../../store/app-state';
 import { Store } from '@ngrx/store';
 import { SubmitCocktailAction } from '../../../store/cocktails/cocktails.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ctl-create-cocktail',
@@ -15,7 +16,8 @@ export class CreateCocktailComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -42,6 +44,7 @@ export class CreateCocktailComponent implements OnInit {
 
     submit() {
         this.store.dispatch(new SubmitCocktailAction(this.cocktailForm.value));
+        this.router.navigate(['']);
     }
 
 }

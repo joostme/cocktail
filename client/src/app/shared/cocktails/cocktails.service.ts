@@ -22,7 +22,7 @@ export class CocktailsService {
     }
 
     getAllCocktails(): Observable<Cocktail[]> {
-        return this.apollo.query({ query: allCocktailsQuery.gql })
+        return this.apollo.query({ query: allCocktailsQuery.gql, fetchPolicy: 'network-only'})
             .map(response => response.data[allCocktailsQuery.name]);
     }
 
