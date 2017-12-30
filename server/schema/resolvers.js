@@ -3,7 +3,7 @@ const cocktails = [
         id: 1,
         name: 'Gin & Tonic',
         description: 'Best cocktail evaa!',
-        image: 'http://image.jpeg',
+        image: 'https://www.gintlemen.com/wp-content/uploads/2016/11/gin-tonic-zitrone.jpg',
         ingredients: [
             {
                 name: "Gin",
